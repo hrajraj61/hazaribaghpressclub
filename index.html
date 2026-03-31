@@ -66,6 +66,30 @@
         .news-card { transition: all 0.3s ease; }
         .news-card:hover { transform: translateY(-3px); }
 
+        .tab-btn {
+            border-bottom: 2px solid transparent;
+            color: #475569;
+            transition: all 0.2s ease;
+        }
+
+        .tab-btn.active {
+            color: #b91c1c;
+            border-bottom-color: #b91c1c;
+        }
+
+        .tab-panel { display: none; }
+        .tab-panel.active { display: block; }
+
+        .mini-gallery img {
+            transition: transform 0.4s ease, filter 0.4s ease;
+            filter: grayscale(30%);
+        }
+
+        .mini-gallery img:hover {
+            transform: scale(1.03);
+            filter: grayscale(0%);
+        }
+
         /* Disable heavy effects on mobile */
         @media (max-width: 640px) {
             .desktop-only { display: none; }
@@ -112,7 +136,7 @@
             <div class="lg:col-span-8">
                 <article class="mb-12">
                     <div class="relative overflow-hidden mb-6">
-                        <img src="https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&q=80&w=1200" 
+                        <img src="1 (1).jpeg"
                              class="w-full aspect-video object-cover grayscale-[40%] hover:grayscale-0 transition-all duration-1000" 
                              alt="Press Club">
                     </div>
@@ -124,16 +148,33 @@
                 </article>
 
                 <!-- Grid Sub News -->
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-10 pt-10 border-t">
-                    <div>
+                <div class="pt-10 border-t">
+                    <div class="flex flex-wrap items-center gap-6 border-b pb-3 mb-6 text-[11px] md:text-xs font-black uppercase tracking-widest">
+                        <button class="tab-btn active pb-2" data-tab="mission">मिशन</button>
+                        <button class="tab-btn pb-2" data-tab="activities">गतिविधियाँ</button>
+                        <button class="tab-btn pb-2" data-tab="gallery">फोटो टैब</button>
+                    </div>
+
+                    <div id="mission" class="tab-panel active">
                         <h4 class="text-red-700 text-[10px] font-black uppercase mb-3">मिशन और विजन</h4>
                         <h3 class="text-xl font-bold mb-4 serif">पारदर्शी व्यवस्था और पत्रकार कल्याण।</h3>
                         <p class="text-sm text-slate-500 font-medium leading-relaxed">संस्था का लक्ष्य एक ऐसा मंच प्रदान करना है जहाँ पत्रकारों की आवाज़ को न केवल सुना जाए, बल्कि उनकी सुरक्षा और सुख-दुख में साथ खड़ा रहा जाए।</p>
                     </div>
-                    <div class="bg-slate-50 p-6 border-l-4 border-slate-900">
-                        <h4 class="text-slate-400 text-[10px] font-black uppercase mb-3">अतिथि संदेश</h4>
-                        <p class="text-base font-bold italic mb-4 leading-snug">"हज़ारीबाग़ प्रेस क्लब प्रेस के लोगों के लिए सशक्त आवाज बने और पत्रकारों के दुख-सुख में साथ रहे यही तमन्ना है।"</p>
-                        <p class="text-[10px] font-black uppercase">— मनीष जायसवाल (विधायक, हज़ारीबाग़)</p>
+
+                    <div id="activities" class="tab-panel">
+                        <div class="bg-slate-50 p-6 border-l-4 border-slate-900">
+                            <h4 class="text-slate-400 text-[10px] font-black uppercase mb-3">अतिथि संदेश</h4>
+                            <p class="text-base font-bold italic mb-4 leading-snug">"हज़ारीबाग़ प्रेस क्लब प्रेस के लोगों के लिए सशक्त आवाज बने और पत्रकारों के दुख-सुख में साथ रहे यही तमन्ना है।"</p>
+                            <p class="text-[10px] font-black uppercase">— मनीष जायसवाल (विधायक, हज़ारीबाग़)</p>
+                        </div>
+                    </div>
+
+                    <div id="gallery" class="tab-panel">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 mini-gallery">
+                            <img src="1 (2).jpeg" alt="प्रेस क्लब गतिविधि 1" class="w-full h-52 object-cover border border-slate-200">
+                            <img src="1 (3).jpeg" alt="प्रेस क्लब गतिविधि 2" class="w-full h-52 object-cover border border-slate-200">
+                            <img src="1 (4).jpeg" alt="प्रेस क्लब गतिविधि 3" class="w-full h-52 object-cover border border-slate-200 sm:col-span-2">
+                        </div>
                     </div>
                 </div>
             </div>
@@ -240,6 +281,20 @@
         // Live Date formatting in Hindi
         const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
         document.getElementById('live-date').innerText = new Date().toLocaleDateString('hi-IN', options);
+
+        // Multi-tab interaction
+        const tabButtons = document.querySelectorAll('.tab-btn');
+        const tabPanels = document.querySelectorAll('.tab-panel');
+
+        tabButtons.forEach((button) => {
+            button.addEventListener('click', () => {
+                const tabId = button.getAttribute('data-tab');
+                tabButtons.forEach((btn) => btn.classList.remove('active'));
+                tabPanels.forEach((panel) => panel.classList.remove('active'));
+                button.classList.add('active');
+                document.getElementById(tabId).classList.add('active');
+            });
+        });
     </script>
 </body>
 </html>
