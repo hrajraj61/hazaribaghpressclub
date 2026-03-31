@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>हजारीबाग प्रेस क्लब | आधिकारिक पोर्टल</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Modern & Highly Legible Hindi Fonts */
+        @import url('https://fonts.googleapis.com/css2?family=Mukta:wght@300;400;600;800&family=Noto+Serif+Devanagari:wght@500;700;900&display=swap');
+        
+        :root {
+            --ink: #111827;
+            --paper: #ffffff;
+            --accent: #b91c1c; /* Editorial Red */
+            --border: #e5e7eb;
+        }
+
+        body {
+            font-family: 'Mukta', sans-serif;
+            background-color: var(--paper);
+            color: var(--ink);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        h1, h2, h3, .serif {
+            font-family: 'Noto Serif Devanagari', serif;
+            font-weight: 700;
+        }
+
+        /* Mobile Optimized Typography */
+        .header-title { font-size: clamp(1.8rem, 8vw, 4rem); letter-spacing: -0.04em; font-weight: 900; }
+        .sub-header { font-size: clamp(0.7rem, 2vw, 0.9rem); letter-spacing: 0.3em; font-weight: 800; color: #6b7280; }
+        
+        /* Immersive Reader Layer */
+        #reader-overlay {
+            position: fixed;
+            inset: 0;
+            background: #fff;
+            z-index: 2000;
+            display: none;
+            opacity: 0;
+            transition: all 0.4s ease-out;
+            overflow-y: auto;
+        }
+
+        .reading-active #reader-overlay { display: block; opacity: 1; }
+        
+        .reader-page {
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 3rem 1.5rem;
+            transform: translateY(20px);
+            transition: transform 0.5s ease-out;
+        }
+        
+        .reading-active .reader-page { transform: translateY(0); }
+
+        /* Thin Editorial Lines */
+        .line-divider { border-bottom: 1px solid var(--border); }
+        .double-divider { border-top: 3px double var(--ink); border-bottom: 1px solid var(--ink); }
+
+        /* Clean Card Hover */
+        .news-card { transition: all 0.3s ease; }
+        .news-card:hover { transform: translateY(-3px); }
+
+        /* Disable heavy effects on mobile */
+        @media (max-width: 640px) {
+            .desktop-only { display: none; }
+            .mobile-p { padding: 1.25rem; }
+        }
+    </style>
+</head>
+<body class="bg-slate-50/20">
+
+    <!-- Masthead (Header) -->
+    <header class="bg-white pt-6 md:pt-12 pb-4">
+        <div class="container mx-auto px-4 text-center">
+            <span class="sub-header uppercase mb-3 block">लोकतंत्र का सजग प्रहरी</span>
+            <h1 class="header-title uppercase text-slate-900">हजारीबाग <span class="text-red-700">प्रेस</span> क्लब</h1>
+            
+            <div class="flex items-center justify-between mt-6 pt-2 border-t border-slate-100 text-[10px] md:text-xs font-black uppercase tracking-widest text-slate-400">
+                <span class="hidden md:block">हजारीबाग, झारखंड</span>
+                <span id="live-date">मंगलवार, 31 मार्च 2026</span>
+                <span class="hidden md:block">पंजीकरण संख्या: उपलब्ध</span>
+            </div>
+        </div>
+
+        <!-- Navigation bar -->
+        <nav class="mt-4 border-y border-slate-900 py-1">
+            <div class="container mx-auto px-4 overflow-x-auto">
+                <div class="flex items-center justify-start md:justify-center gap-6 md:gap-12 py-2 whitespace-nowrap text-[11px] md:text-xs font-black uppercase tracking-widest">
+                    <a href="#" class="text-red-700">मुख्य पृष्ठ</a>
+                    <a href="#about" class="hover:text-red-700 transition">हमारे बारे में</a>
+                    <a href="#members" class="hover:text-red-700 transition">बोर्ड सदस्य</a>
+                    <a href="#contact" class="hover:text-red-700 transition">संपर्क</a>
+                    <button onclick="toggleReader()" class="flex items-center gap-2 border-l pl-6 text-slate-400">
+                        <i class="fas fa-book-open"></i> <span class="hidden sm:inline">रीडिंग मोड</span>
+                    </button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Section -->
+    <main class="container mx-auto px-4 py-8 md:py-16">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+            
+            <!-- Lead Article -->
+            <div class="lg:col-span-8">
+                <article class="mb-12">
+                    <div class="relative overflow-hidden mb-6">
+                        <img src="https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&q=80&w=1200" 
+                             class="w-full aspect-video object-cover grayscale-[40%] hover:grayscale-0 transition-all duration-1000" 
+                             alt="Press Club">
+                    </div>
+                    <h2 class="text-3xl md:text-5xl font-black mb-6 leading-tight text-slate-900">हज़ारीबाग़ प्रेसक्लब: पत्रकारों के हित के लिए सतत प्रयत्नशील।</h2>
+                    <p class="text-lg md:text-xl text-slate-600 font-medium leading-relaxed mb-6">
+                        हज़ारीबाग़ प्रेसक्लब हज़ारीबाग़ ज़िले के पत्रकारों का एक समूह है जो पत्रकारों के हित के लिए निरंतर कार्य कर रहा है। ज़िले के सभी पत्रकारों के लिए गठित इस संस्था का मूल उद्देश्य पारदर्शी व्यवस्था के तहत पत्रकारों और उनके आश्रितों को मदद पहुँचाना है।
+                    </p>
+                    <button onclick="toggleReader()" class="bg-slate-900 text-white px-6 py-3 text-xs font-black uppercase tracking-widest hover:bg-red-700 transition">अधिक जानें</button>
+                </article>
+
+                <!-- Grid Sub News -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-10 pt-10 border-t">
+                    <div>
+                        <h4 class="text-red-700 text-[10px] font-black uppercase mb-3">मिशन और विजन</h4>
+                        <h3 class="text-xl font-bold mb-4 serif">पारदर्शी व्यवस्था और पत्रकार कल्याण।</h3>
+                        <p class="text-sm text-slate-500 font-medium leading-relaxed">संस्था का लक्ष्य एक ऐसा मंच प्रदान करना है जहाँ पत्रकारों की आवाज़ को न केवल सुना जाए, बल्कि उनकी सुरक्षा और सुख-दुख में साथ खड़ा रहा जाए।</p>
+                    </div>
+                    <div class="bg-slate-50 p-6 border-l-4 border-slate-900">
+                        <h4 class="text-slate-400 text-[10px] font-black uppercase mb-3">अतिथि संदेश</h4>
+                        <p class="text-base font-bold italic mb-4 leading-snug">"हज़ारीबाग़ प्रेस क्लब प्रेस के लोगों के लिए सशक्त आवाज बने और पत्रकारों के दुख-सुख में साथ रहे यही तमन्ना है।"</p>
+                        <p class="text-[10px] font-black uppercase">— मनीष जायसवाल (विधायक, हज़ारीबाग़)</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sidebar -->
+            <aside class="lg:col-span-4 space-y-12 border-t lg:border-t-0 lg:border-l border-slate-100 pt-12 lg:pt-0 lg:pl-12">
+                
+                <!-- Contact Card -->
+                <div id="contact" class="bg-slate-900 text-white p-8 rounded-sm">
+                    <h4 class="text-xs font-black uppercase tracking-widest mb-6 border-b border-white/20 pb-2">संपर्क विवरण</h4>
+                    <div class="space-y-6 text-sm">
+                        <div class="flex gap-4">
+                            <i class="fas fa-map-marker-alt text-red-500 mt-1"></i>
+                            <p class="opacity-80">Press Club Hazaribagh, C.T.S. Colony, Hazaribagh, Jharkhand 825301</p>
+                        </div>
+                        <div class="flex gap-4">
+                            <i class="fas fa-phone-alt text-red-500 mt-1"></i>
+                            <p class="opacity-80">+91 9470961786<br>+91 9431155458</p>
+                        </div>
+                        <div class="flex gap-4">
+                            <i class="fas fa-envelope text-red-500 mt-1"></i>
+                            <p class="opacity-80">hzbpressclub@gmail.com</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Actions -->
+                <div class="space-y-4">
+                    <h4 class="text-[10px] font-black uppercase tracking-widest text-slate-400">त्वरित सेवाएँ</h4>
+                    <a href="#" class="block border p-4 text-xs font-black uppercase hover:bg-slate-50 transition">पत्रकार पंजीकरण <i class="fas fa-external-link-alt ml-2 opacity-30"></i></a>
+                    <a href="#" class="block border p-4 text-xs font-black uppercase hover:bg-slate-50 transition">फोटो गैलरी</a>
+                    <a href="#" class="block border p-4 text-xs font-black uppercase hover:bg-slate-50 transition">प्रेस विज्ञप्ति</a>
+                </div>
+
+                <!-- Quote 2 -->
+                <div class="pt-8 border-t">
+                    <p class="text-sm font-medium italic text-slate-600 mb-4">"हज़ारीबाग़ प्रेस क्लब एक आवश्यक मंच है। इसमें पत्रकारिता जगत के लिए एक अच्छा उदाहरण स्थापित कर पाने की अपार संभावनाएं हैं।"</p>
+                    <p class="text-[10px] font-black uppercase text-slate-900">— जयंत सिन्हा (पूर्व सांसद, हज़ारीबाग़)</p>
+                </div>
+            </aside>
+        </div>
+    </main>
+
+    <!-- Immersive Reader Mode -->
+    <div id="reader-overlay">
+        <div class="reader-page">
+            <div class="flex justify-between items-center mb-12 border-b-2 border-black pb-4">
+                <span class="text-[10px] font-black uppercase tracking-[0.4em] text-red-700">गहन पठन मोड</span>
+                <button onclick="toggleReader()" class="hover:text-red-700 transition"><i class="fas fa-times text-2xl"></i></button>
+            </div>
+            
+            <article class="prose prose-slate max-w-none">
+                <h2 class="text-4xl md:text-6xl font-black mb-10 text-slate-900 leading-tight">हज़ारीबाग़ प्रेस क्लब का संकल्प: पारदर्शी पत्रकारिता।</h2>
+                
+                <div class="space-y-8 text-lg md:text-2xl text-slate-700 font-medium leading-relaxed">
+                    <p>हज़ारीबाग़ प्रेसक्लब हज़ारीबाग़ ज़िले के पत्रकारों का एक साझा समूह है। हमारी स्थापना का मूल उद्देश्य एक ऐसी पारदर्शी व्यवस्था बनाना है जिसके तहत पत्रकारों के अधिकारों की रक्षा हो सके और उनके कठिन समय में संस्था मजबूती से खड़ी रहे।</p>
+                    
+                    <p>हम केवल एक संगठन नहीं हैं, बल्कि हजारीबाग के पत्रकारों के लिए एक सशक्त आवाज़ हैं। हमारा लक्ष्य जिले के दूर-दराज के इलाकों में काम करने वाले पत्रकारों को मुख्यधारा से जोड़ना और उन्हें वह सम्मान दिलाना है जिसके वे हकदार हैं।</p>
+
+                    <div class="bg-slate-50 p-10 border-l-8 border-red-700 my-16">
+                        <p class="text-2xl md:text-3xl font-bold text-slate-900 italic">"हम पत्रकारों के सुख-दुख में साथ खड़े रहने के लिए संकल्पित हैं।"</p>
+                    </div>
+
+                    <p>भविष्य में, हम पत्रकारों के लिए स्वास्थ्य बीमा, बच्चों की शिक्षा के लिए सहायता और डिजिटल युग के अनुरूप प्रशिक्षण कार्यक्रमों का विस्तार करने की योजना बना रहे हैं।</p>
+                </div>
+                <div class="h-24"></div>
+            </article>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-slate-200 py-16 px-4">
+        <div class="container mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
+            <div class="text-center md:text-left">
+                <h4 class="text-2xl font-black uppercase tracking-tighter">हजारीबाग <span class="text-red-700">प्रेस</span> क्लब</h4>
+                <p class="text-[10px] text-slate-400 font-bold uppercase mt-2 tracking-widest">© 2026 सर्वाधिकार सुरक्षित | हजारीबाग, झारखंड</p>
+            </div>
+            
+            <div class="flex gap-8 text-slate-400">
+                <a href="#" class="hover:text-red-700 transition"><i class="fab fa-facebook-f text-lg"></i></a>
+                <a href="#" class="hover:text-red-700 transition"><i class="fab fa-twitter text-lg"></i></a>
+                <a href="#" class="hover:text-red-700 transition"><i class="fab fa-youtube text-lg"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function toggleReader() {
+            const body = document.body;
+            body.classList.toggle('reading-active');
+            const overlay = document.getElementById('reader-overlay');
+            
+            if (body.classList.contains('reading-active')) {
+                overlay.style.display = 'block';
+                body.style.overflow = 'hidden';
+                setTimeout(() => overlay.style.opacity = '1', 10);
+            } else {
+                overlay.style.opacity = '0';
+                body.style.overflow = 'auto';
+                setTimeout(() => overlay.style.display = 'none', 400);
+            }
+        }
+
+        // Live Date formatting in Hindi
+        const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+        document.getElementById('live-date').innerText = new Date().toLocaleDateString('hi-IN', options);
+    </script>
+</body>
+</html>
