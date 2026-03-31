@@ -183,7 +183,7 @@
             <aside class="lg:col-span-4 space-y-12 border-t lg:border-t-0 lg:border-l border-slate-100 pt-12 lg:pt-0 lg:pl-12">
                 
                 <!-- Contact Card -->
-                <div id="contact" class="bg-slate-900 text-white p-8 rounded-sm">
+                <div id="contact-card" class="bg-slate-900 text-white p-8 rounded-sm">
                     <h4 class="text-xs font-black uppercase tracking-widest mb-6 border-b border-white/20 pb-2">संपर्क विवरण</h4>
                     <div class="space-y-6 text-sm">
                         <div class="flex gap-4">
@@ -216,6 +216,80 @@
                 </div>
             </aside>
         </div>
+
+        <!-- POC Tabs: हमारे बारे में | बोर्ड सदस्य | संपर्क | रीडिंग मोड -->
+        <section id="info-tabs" class="mt-16 border-t border-slate-200 pt-10">
+            <div class="flex flex-wrap items-center gap-6 border-b pb-3 mb-8 text-[11px] md:text-xs font-black uppercase tracking-widest">
+                <button class="tab-btn info-tab-btn active pb-2" data-tab="about-club">हमारे बारे में</button>
+                <button class="tab-btn info-tab-btn pb-2" data-tab="board-club">बोर्ड सदस्य</button>
+                <button class="tab-btn info-tab-btn pb-2" data-tab="contact-club">संपर्क</button>
+                <button class="tab-btn info-tab-btn pb-2" data-tab="reading-club">रीडिंग मोड</button>
+            </div>
+
+            <div id="about-club" class="tab-panel info-tab-panel active">
+                <div class="grid grid-cols-1 lg:grid-cols-5 gap-6 items-center">
+                    <div class="lg:col-span-3 space-y-4">
+                        <h3 id="about" class="text-2xl md:text-3xl font-black serif">हजारीबाग की आवाज़, पत्रकारों का साझा मंच।</h3>
+                        <p class="text-slate-600">हज़ारीबाग़ प्रेस क्लब का उद्देश्य जिले की पत्रकारिता को संस्थागत ताकत देना है। क्लब स्थानीय रिपोर्टरों, फोटोजर्नलिस्ट्स और डिजिटल पत्रकारों को प्रशिक्षण, नेटवर्किंग और आपसी सहायता का प्लेटफॉर्म देता है।</p>
+                        <p class="text-slate-600">हज़ारीबाग़ क्षेत्र अपनी ऐतिहासिक, पर्यावरणीय और सामाजिक विविधता के लिए जाना जाता है—कैनरी हिल्स, राष्ट्रीय उद्यान, और खनन-पट्टी जैसे विषयों पर तथ्यपरक रिपोर्टिंग को बढ़ावा देना हमारी प्राथमिकता है।</p>
+                    </div>
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d8/Canary_Hills%2C_Hazaribagh.jpg/1280px-Canary_Hills%2C_Hazaribagh.jpg" alt="कैनरी हिल्स, हजारीबाग" class="lg:col-span-2 w-full h-64 object-cover border border-slate-200">
+                </div>
+            </div>
+
+            <div id="board-club" class="tab-panel info-tab-panel">
+                <h3 id="members" class="text-2xl font-black mb-6 serif">बोर्ड सदस्य (प्रस्तावित संरचना)</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                    <div class="border p-5 bg-white">
+                        <p class="text-red-700 text-xs font-black uppercase">अध्यक्ष</p>
+                        <p class="text-lg font-bold mt-1">मुख्य समन्वयक सदस्य</p>
+                        <p class="text-sm text-slate-500">नीति, मीडिया-नैतिकता और प्रशासनिक दिशा का नेतृत्व।</p>
+                    </div>
+                    <div class="border p-5 bg-white">
+                        <p class="text-red-700 text-xs font-black uppercase">महासचिव</p>
+                        <p class="text-lg font-bold mt-1">संगठन संचालन</p>
+                        <p class="text-sm text-slate-500">बैठक एजेंडा, प्रेस नोट, और सदस्यता समन्वय।</p>
+                    </div>
+                    <div class="border p-5 bg-white">
+                        <p class="text-red-700 text-xs font-black uppercase">कोषाध्यक्ष</p>
+                        <p class="text-lg font-bold mt-1">वित्तीय पारदर्शिता</p>
+                        <p class="text-sm text-slate-500">फंड प्रबंधन, सहायता योजना और ऑडिट रिपोर्ट।</p>
+                    </div>
+                    <div class="border p-5 bg-white">
+                        <p class="text-red-700 text-xs font-black uppercase">कार्यकारिणी सदस्य</p>
+                        <p class="text-lg font-bold mt-1">क्षेत्रीय प्रतिनिधि</p>
+                        <p class="text-sm text-slate-500">शहरी व ग्रामीण पत्रकारों की समस्याओं का संकलन।</p>
+                    </div>
+                </div>
+            </div>
+
+            <div id="contact-club" class="tab-panel info-tab-panel">
+                <div class="grid grid-cols-1 lg:grid-cols-5 gap-6 items-start">
+                    <div class="lg:col-span-3">
+                        <h3 id="contact" class="text-2xl font-black mb-4 serif">संपर्क एवं कार्यालय समय</h3>
+                        <ul class="space-y-3 text-slate-700">
+                            <li><strong>पता:</strong> C.T.S. Colony, Hazaribagh, Jharkhand 825301</li>
+                            <li><strong>ईमेल:</strong> hzbpressclub@gmail.com</li>
+                            <li><strong>मोबाइल:</strong> +91 9470961786, +91 9431155458</li>
+                            <li><strong>कार्यालय समय:</strong> सोमवार–शनिवार, सुबह 10:30 से शाम 6:00 बजे तक</li>
+                        </ul>
+                    </div>
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/46/Hazaribagh_Town_from_Canary_Hill.jpg/1280px-Hazaribagh_Town_from_Canary_Hill.jpg" alt="हजारीबाग शहर का दृश्य" class="lg:col-span-2 w-full h-64 object-cover border border-slate-200">
+                </div>
+            </div>
+
+            <div id="reading-club" class="tab-panel info-tab-panel">
+                <div class="bg-slate-900 text-white p-6 md:p-8">
+                    <h3 class="text-2xl font-black mb-3 serif">रीडिंग मोड: लंबी रिपोर्ट के लिए अनुकूल अनुभव</h3>
+                    <p class="opacity-90 mb-4">रीडिंग मोड फीचर को लंबी खोजी रिपोर्ट, प्रेस विज्ञप्ति और विशेष आलेख पढ़ने के लिए बनाया गया है। इससे पाठ का फोकस बढ़ता है और मोबाइल पर भी पढ़ना आसान हो जाता है।</p>
+                    <ol class="list-decimal pl-6 space-y-2 opacity-90">
+                        <li>ऊपर नेविगेशन में <strong>रीडिंग मोड</strong> बटन दबाएँ।</li>
+                        <li>ओवरले पेज में बिना विचलन के विस्तृत सामग्री पढ़ें।</li>
+                        <li>बंद करने के लिए ऊपर दाएँ कोने में <strong>X</strong> आइकन क्लिक करें।</li>
+                    </ol>
+                </div>
+            </div>
+        </section>
     </main>
 
     <!-- Immersive Reader Mode -->
@@ -282,15 +356,29 @@
         const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
         document.getElementById('live-date').innerText = new Date().toLocaleDateString('hi-IN', options);
 
-        // Multi-tab interaction
-        const tabButtons = document.querySelectorAll('.tab-btn');
-        const tabPanels = document.querySelectorAll('.tab-panel');
+        // Multi-tab interaction (top content tabs)
+        const tabButtons = document.querySelectorAll('.tab-btn:not(.info-tab-btn)');
+        const tabPanels = document.querySelectorAll('.tab-panel:not(.info-tab-panel)');
 
         tabButtons.forEach((button) => {
             button.addEventListener('click', () => {
                 const tabId = button.getAttribute('data-tab');
                 tabButtons.forEach((btn) => btn.classList.remove('active'));
                 tabPanels.forEach((panel) => panel.classList.remove('active'));
+                button.classList.add('active');
+                document.getElementById(tabId).classList.add('active');
+            });
+        });
+
+        // Info section tabs
+        const infoTabButtons = document.querySelectorAll('.info-tab-btn');
+        const infoTabPanels = document.querySelectorAll('.info-tab-panel');
+
+        infoTabButtons.forEach((button) => {
+            button.addEventListener('click', () => {
+                const tabId = button.getAttribute('data-tab');
+                infoTabButtons.forEach((btn) => btn.classList.remove('active'));
+                infoTabPanels.forEach((panel) => panel.classList.remove('active'));
                 button.classList.add('active');
                 document.getElementById(tabId).classList.add('active');
             });
